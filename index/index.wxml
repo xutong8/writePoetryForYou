@@ -1,0 +1,39 @@
+<view class="firstView">
+  <text>句式选择</text>
+  <view class="firstView_top">
+    <view class="firstView_top_wuyan">
+      <image src="../images/毛笔小.svg" mode="aspectFit" wx-if="{{currentSentence === 0}}"></image>
+      <text style="color: {{ currentSentence === 0 ? '#bb534c' : 'black' }}" bindtap="handleChangeSentence"
+        id="0">五言绝句</text>
+    </view>
+    <view class="firstView_top_qiyan">
+      <image src="../images/毛笔小.svg" mode="aspectFit" wx-if="{{currentSentence === 1}}"></image>
+      <text style="color: {{ currentSentence === 1 ? '#bb534c' : 'black' }}" bindtap="handleChangeSentence"
+        id="1">七言绝句</text>
+    </view>
+  </view>
+  <text>情绪选择</text>
+  <!-- <view class="firstView_mid">
+    <text wx:for="{{emotions}}" wx:for-item="emotion" wx:key="index"
+      style="color: {{emotion.isSelected ? '#bb534c' : 'black' }}">
+      {{emotion.text}}
+    </text>
+  </view> -->
+  <view class="firstView_bot">
+    <view class="firstView_bot_top">
+      <view wx:for="{{emotions}}" wx:for-item="emotion" wx:key="index" wx:if="{{emotion.isSelected}}">
+        <text>{{emotion.text}}</text>
+        <slider min="0" max="1" step="0.01" block-size="10" value="{{emotion.value}}" bindchange="handleSliderChange"
+          id="{{emotion.text}}" />
+      </view>
+    </view>
+    <view class="firstView_bot_radar">
+      <view class="firstView_bot_radar_container">
+        <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+      </view>
+    </view>
+  </view>
+  <view class="firstView_btn">
+    <button type="primary" size="mini" bindtap="handleSystemProduce">系统生成</button>
+  </view>
+</view>
