@@ -2,14 +2,14 @@
   <text>句式选择</text>
   <view class="firstView_top">
     <view class="firstView_top_wuyan">
-      <image src="../images/毛笔小.svg" mode="aspectFit" wx-if="{{currentSentence === 0}}"></image>
-      <text style="color: {{ currentSentence === 0 ? '#bb534c' : 'black' }}" bindtap="handleChangeSentence"
-        id="0">五言绝句</text>
+      <image src="../images/毛笔小.svg" mode="aspectFit" wx-if="{{rhyme === 2}}"></image>
+      <text style="color: {{ rhyme === 2 ? '#bb534c' : 'black' }}" bindtap="handleChangeRhyme"
+        id="2">五言绝句</text>
     </view>
     <view class="firstView_top_qiyan">
-      <image src="../images/毛笔小.svg" mode="aspectFit" wx-if="{{currentSentence === 1}}"></image>
-      <text style="color: {{ currentSentence === 1 ? '#bb534c' : 'black' }}" bindtap="handleChangeSentence"
-        id="1">七言绝句</text>
+      <image src="../images/毛笔小.svg" mode="aspectFit" wx-if="{{rhyme === 0}}"></image>
+      <text style="color: {{ rhyme === 0 ? '#bb534c' : 'black' }}" bindtap="handleChangeRhyme"
+        id="0">七言绝句</text>
     </view>
   </view>
   <text>情绪选择</text>

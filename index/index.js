@@ -45,7 +45,7 @@ Page({
       // onInit: initChart
       lazyLoad: true
     },
-    currentSentence: 0,
+    rhyme: 2,
     pingList: [1, 3, 5, 7, 9]
   },
   onReady() {
@@ -62,9 +62,9 @@ Page({
     }
     this.init_echarts(); // 重新渲染图表
   },
-  handleChangeSentence(e) {
+  handleChangeRhyme(e) {
     this.setData({
-      currentSentence: Number.parseInt(e.target.id)
+      rhyme: Number.parseInt(e.target.id)
     });
   },
   init_echarts() {
@@ -139,8 +139,16 @@ Page({
     wx.showLoading({
       title: "正在向后台请求接口..."
     });
+    const {
+      emotions,
+      pingList,
+      rhyme
+    } = this.data;
+    const emotion = emotions.map((emotion) => emotion.value).join(',');
+    const len = pingList.length;
+    const yun = pingList[Math.floor(Math.random() * len)];
     wx.request({
-      url: 'http://35332j61m8.zicp.vip:43610/mode_1/writePoems?emotion=0.5,0.5,0.5,0.5,0,0&yun=9&rhyme=2',
+      url: `http://35332j61m8.zicp.vip:43610/mode_1/writePoems?emotion=${emotion}&yun=${yun}&rhyme=${rhyme}`,
       method: 'GET',
       success(res) {
         const poem = res.data.poem;
@@ -151,7 +159,8 @@ Page({
               url: '/poetry/poetry',
               success(res) {
                 res.eventChannel.emit('sendWords', {
-                  words
+                  words,
+                  rhyme
                 });
               }
             });

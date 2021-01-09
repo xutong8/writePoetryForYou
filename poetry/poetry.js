@@ -2,7 +2,8 @@ const app = getApp()
 
 Page({
   data: {
-    words: []
+    words: [],
+    rhyme: 0
   },
   onLoad() {
     const self = this;
@@ -10,7 +11,8 @@ Page({
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('sendWords', function (data) {
       self.setData({
-        words: data.words
+        words: data.words,
+        rhyme: data.rhyme
       });
     });
   },
@@ -23,7 +25,7 @@ Page({
       // select返回的是单个元素
       // selectAll返回的是一个数组
       const ctx = wx.createCanvasContext(canvas.id);
-      console.log('ctx: ', ctx);
+      // console.log('ctx: ', ctx);
       ctx.beginPath();
       ctx.moveTo(75, 50);
       ctx.lineTo(100, 75);

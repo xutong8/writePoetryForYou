@@ -1,8 +1,8 @@
 <view class="secondView">
   <text>为你写诗</text>
   <view class="secondView_form">
-    <view class="secondView_form_words">
-      <view class="secondView_form_word" wx:for="{{words}}" wx:for-item="word" wx:key="index">
+    <view class="secondView_form_words {{ rhyme === 2 ? 'secondView_form_words--five' : 'secondView_form_words--seven' }}">
+      <view class="secondView_form_word {{ rhyme === 2 ? 'secondView_form_word--five' :  'secondView_form_word--seven' }}" wx:for="{{words}}" wx:for-item="word" wx:key="index">
         <view class="secondView_form_word_tianzi">
           <text>{{ word }}</text>
         </view>

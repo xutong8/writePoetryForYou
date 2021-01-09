@@ -28,7 +28,7 @@
 }
 
 .secondView_form_bot {
-  margin-top: 50rpx;
+  /* margin-top: 50rpx; */
   height: 0;
   flex-grow: 1;
   flex-shrink: 0;
@@ -47,13 +47,25 @@
 }
 
 .secondView_form_word {
-  width: 14%;
   height: 25%;
   float: left;
+}
+
+.secondView_form_word--five {
+  width: 14%;
   margin-right: 7.5%;
 }
 
-.secondView_form_words view:nth-child(5n) {
+.secondView_form_word--seven {
+  width: 10%;
+  margin-right: 5%;
+}
+
+.secondView_form_words--five view:nth-child(5n) {
+  margin-right: 0;
+}
+
+.secondView_form_words--seven view:nth-child(7n) {
   margin-right: 0;
 }
 
