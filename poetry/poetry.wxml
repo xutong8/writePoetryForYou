@@ -1,0 +1,21 @@
+<view class="secondView">
+  <text>为你写诗</text>
+  <view class="secondView_form">
+    <view class="secondView_form_words">
+      <view class="secondView_form_word" wx:for="{{words}}" wx:for-item="word" wx:key="index">
+        {{word}}
+      </view>
+    </view>
+    <view class="secondView_form_bot">
+      <text>系统评分</text>
+      <view class="secondView_form_bot_emotion">
+        <text>7.9分</text>
+        <text>情感</text>
+      </view>
+    </view>
+  </view>
+  <view class="secondView_bot">
+    <button type="primary" size="mini" bindtap="backToPreviousPage">返回上页</button>
+    <button type="primary" size="mini" open-type="share">分享诗歌</button>
+  </view>
+</view>

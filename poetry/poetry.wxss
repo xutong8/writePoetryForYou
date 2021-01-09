@@ -1,0 +1,68 @@
+.secondView {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 50rpx;
+  padding-bottom: 35rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondView > text {
+  font-size: 50rpx;
+}
+
+.secondView .secondView_form {
+  flex-grow: 5;
+  flex-shrink: 0;
+  margin-top: 50rpx;
+  margin-bottom: 20rpx;
+  padding: 0 60rpx 0rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondView_form_words {
+  flex-grow: 4;
+  flex-shrink: 0;
+  background: greenyellow;
+  display: grid;
+  grid-template-columns: repeat(5, 16%);
+  grid-template-rows: repeat(4, 22%);
+  grid-row-gap: 4%;
+  grid-column-gap: 5%;
+}
+
+.secondView_form_bot {
+  flex-grow: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.secondView_form_bot text {
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.secondView .secondView_form .secondView_form_word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+}
+
+.secondView .secondView_bot {
+  flex-grow: 2;
+  flex-shrink: 0;
+  /* background: yellow; */
+  padding: 0 60rpx 0rpx 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.secondView_bot button[type='primary'] {
+  background-color: #795648;
+}

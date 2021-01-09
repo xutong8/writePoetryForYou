@@ -1,11 +1,12 @@
 {
   "pages":[
-    "index/index"
+    "index/index",
+    "poetry/poetry"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "ZJU为你写诗",
+    "navigationBarTitleText": "VAG为你写诗",
     "navigationBarTextStyle":"black"
   },
   "style": "v2",

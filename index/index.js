@@ -71,6 +71,7 @@ Page({
     const value = this.data.emotions.map((emotion) => emotion.value);
     this.echartsComponnet.init((canvas, width, height) => {
       // 初始化图表
+      console.log('size: ', width, height);
       const chart = echarts.init(canvas, null, {
         width: width,
         height: height
@@ -83,6 +84,8 @@ Page({
   getOption(value) {
     const option = {
       radar: {
+        // 调整指示器名称与指示器轴的距离
+        nameGap: 5,
         name: {
           textStyle: {
             color: '#fff',
@@ -93,27 +96,33 @@ Page({
         },
         indicator: [{
             name: '思念远方',
-            max: 1.0
+            max: 1.0,
+            min: 0.0
           },
           {
             name: '离别不舍',
-            max: 1.0
+            max: 1.0,
+            min: 0.0
           },
           {
             name: '深切爱情',
-            max: 1.0
+            max: 1.0,
+            min: 0.0
           },
           {
             name: '军旅悲壮',
-            max: 1.0
+            max: 1.0,
+            min: 0.0
           },
           {
             name: '忧国忧民',
-            max: 1.0
+            max: 1.0,
+            min: 0.0
           },
           {
             name: '咏史怀古',
-            max: 1.0
+            max: 1.0,
+            min: 0.0
           }
         ]
       },
@@ -136,6 +145,9 @@ Page({
       wx.hideLoading({
         success: (res) => {
           console.log('数据访问成功了...');
+          wx.navigateTo({
+            url: '/poetry/poetry'
+          });
         }
       })
     }, 2000);
