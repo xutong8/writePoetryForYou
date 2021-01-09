@@ -3,14 +3,27 @@
   <view class="secondView_form">
     <view class="secondView_form_words">
       <view class="secondView_form_word" wx:for="{{words}}" wx:for-item="word" wx:key="index">
-        {{word}}
+        <view class="secondView_form_word_tianzi">
+          <text>{{ word }}</text>
+        </view>
+        <canvas canvas-id="canvas_{{index}}" id="canvas_{{index}}" style="width: 50.39px; height: 41.97px;"></canvas>
       </view>
     </view>
     <view class="secondView_form_bot">
-      <text>系统评分</text>
-      <view class="secondView_form_bot_emotion">
+      <view>
+        <text>系统评分</text>
+      </view>
+      <view>
+        <text>7.9分</text>
+        <text>连贯</text>
+      </view>
+      <view>
         <text>7.9分</text>
         <text>情感</text>
+      </view>
+      <view>
+        <text>7.9分</text>
+        <text>韵律</text>
       </view>
     </view>
   </view>

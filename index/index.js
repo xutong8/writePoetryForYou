@@ -55,8 +55,8 @@ Page({
   handleSliderChange(e) {
     const text = e.target.id;
     const emotions = this.data.emotions;
-    for(const emotion of emotions) {
-      if(emotion.text === text) {
+    for (const emotion of emotions) {
+      if (emotion.text === text) {
         emotion.value = e.detail.value;
       }
     }
@@ -140,16 +140,31 @@ Page({
     wx.showLoading({
       title: "正在向后台请求接口..."
     });
-    // TODO：编写实际的页面请求
-    setTimeout(() => {
-      wx.hideLoading({
-        success: (res) => {
-          console.log('数据访问成功了...');
-          wx.navigateTo({
-            url: '/poetry/poetry'
-          });
+    wx.request({
+      url: 'http://35332j61m8.zicp.vip:43610/mode_1/writePoems?emotion=0.5,0.5,0.5,0.5,0,0&yun=9&rhyme=2',
+      method: 'GET',
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        sendWord: function(data) {
+          console.log(data)
         }
-      })
-    }, 2000);
+      },
+      success(res) {
+        console.log('res: ', res);
+        const poem = res.data.poem;
+        const words = poem.flat(5);
+        console.log('words');
+        wx.hideLoading({
+          success: () => {
+            wx.navigateTo({
+              url: '/poetry/poetry',
+              success(res) {
+                res.eventChannel.emit('sendWords', {words});
+              }
+            });
+          }
+        })
+      }
+    });
   }
 })

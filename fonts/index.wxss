@@ -1,0 +1,4 @@
+@font-face {
+  font-family: 'custom_font';
+  src: url('http://35332j61m8.zicp.vip/static/华康标题宋W9.TTF');
+}
