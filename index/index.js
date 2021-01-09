@@ -45,9 +45,9 @@ Page({
       // onInit: initChart
       lazyLoad: true
     },
-    currentSentence: 0
+    currentSentence: 0,
+    pingList: [1, 3, 5, 7, 9]
   },
-  onLoad() {},
   onReady() {
     this.echartsComponnet = this.selectComponent('#mychart-dom-bar'); //一定要初始化
     this.init_echarts(); //初始化图表
@@ -71,7 +71,6 @@ Page({
     const value = this.data.emotions.map((emotion) => emotion.value);
     this.echartsComponnet.init((canvas, width, height) => {
       // 初始化图表
-      console.log('size: ', width, height);
       const chart = echarts.init(canvas, null, {
         width: width,
         height: height
@@ -143,23 +142,17 @@ Page({
     wx.request({
       url: 'http://35332j61m8.zicp.vip:43610/mode_1/writePoems?emotion=0.5,0.5,0.5,0.5,0,0&yun=9&rhyme=2',
       method: 'GET',
-      events: {
-        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-        sendWord: function(data) {
-          console.log(data)
-        }
-      },
       success(res) {
-        console.log('res: ', res);
         const poem = res.data.poem;
-        const words = poem.flat(5);
-        console.log('words');
+        const words = poem.flat(1);
         wx.hideLoading({
           success: () => {
             wx.navigateTo({
               url: '/poetry/poetry',
               success(res) {
-                res.eventChannel.emit('sendWords', {words});
+                res.eventChannel.emit('sendWords', {
+                  words
+                });
               }
             });
           }
