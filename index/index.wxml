@@ -13,12 +13,6 @@
     </view>
   </view>
   <text>情绪选择</text>
-  <!-- <view class="firstView_mid">
-    <text wx:for="{{emotions}}" wx:for-item="emotion" wx:key="index"
-      style="color: {{emotion.isSelected ? '#bb534c' : 'black' }}">
-      {{emotion.text}}
-    </text>
-  </view> -->
   <view class="firstView_bot">
     <view class="firstView_bot_top">
       <view wx:for="{{emotions}}" wx:for-item="emotion" wx:key="index" wx:if="{{emotion.isSelected}}">

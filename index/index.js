@@ -48,6 +48,11 @@ Page({
     rhyme: 2,
     pingList: [1, 3, 5, 7, 9]
   },
+  onShow() {
+    this.setData({
+      rhyme: 2
+    });
+  },
   onReady() {
     this.echartsComponnet = this.selectComponent('#mychart-dom-bar'); //一定要初始化
     this.init_echarts(); //初始化图表
@@ -136,6 +141,7 @@ Page({
     return option;
   },
   handleSystemProduce() {
+    const self = this;
     wx.showLoading({
       title: "正在向后台请求接口..."
     });
@@ -148,24 +154,56 @@ Page({
     const len = pingList.length;
     const yun = pingList[Math.floor(Math.random() * len)];
     wx.request({
-      url: `http://35332j61m8.zicp.vip:43610/mode_1/writePoems?emotion=${emotion}&yun=${yun}&rhyme=${rhyme}`,
+      url: `http://xt2021.liujl.com:8001/mode_1/writePoems?emotion=${emotion}&yun=${yun}&rhyme=${rhyme}`,
       method: 'GET',
-      success(res) {
-        const poem = res.data.poem;
-        const words = poem.flat(1);
+      timeout: 4000,
+      fail() {
+        console.log('writePoem接口调用失败了...');
         wx.hideLoading({
-          success: () => {
-            wx.navigateTo({
-              url: '/poetry/poetry',
-              success(res) {
-                res.eventChannel.emit('sendWords', {
-                  words,
-                  rhyme
+          success: (res) => {},
+        })
+      },
+      success(res) {
+        const poems = res.data.poem;
+        const words = poems.flat(1);
+        for (let i = 0; i < poems.length; i++) {
+          poems[i] = poems[i].join('');
+        }
+        const poem = poems.join('|');
+        wx.request({
+          url: `http://xt2021.liujl.com:8001/mode_1/analysePoem?emotion=0,0,1,0,0,0&poem=${poem}&yun=${yun}&rhyme=${rhyme}`,
+          method: 'GET',
+          timeout: 4000,
+          fail() {
+            console.log('analysePoem接口调用失败了...');
+            wx.hideLoading({
+              success: (res) => {},
+            })
+          },
+          success(res) {
+            const {
+              continuity_score,
+              emotion_score,
+              rhyme_score
+            } = res.data;
+            wx.hideLoading({
+              success: () => {
+                wx.navigateTo({
+                  url: '/poetry/poetry',
+                  success(res) {
+                    res.eventChannel.emit('sendWords', {
+                      words,
+                      rhyme,
+                      continuity_score,
+                      emotion_score,
+                      rhyme_score
+                    });
+                  }
                 });
               }
             });
           }
-        })
+        });
       }
     });
   }

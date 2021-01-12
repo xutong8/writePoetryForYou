@@ -7,6 +7,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-image: url('http://xt2021.liujl.com:8080/static/bg_1.png');
+  background-size: 95% 98%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .secondView > text {
@@ -28,7 +32,6 @@
 }
 
 .secondView_form_bot {
-  /* margin-top: 50rpx; */
   height: 0;
   flex-grow: 1;
   flex-shrink: 0;
@@ -42,8 +45,24 @@
   flex-grow: 1;
   flex-shrink: 0;
   font-weight: 700;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  position: relative;
+}
+
+.secondView_form_bot view text {
+  display: block;
+  position: absolute;
+}
+
+.secondView_form_bot view text:nth-child(1) {
+  top: 60rpx;
+  left: 10%;
+}
+
+.secondView_form_bot view text:nth-child(2) {
+  top: 120rpx;
+  left: 10%;
 }
 
 .secondView_form_word {
@@ -52,8 +71,8 @@
 }
 
 .secondView_form_word--five {
-  width: 14%;
-  margin-right: 7.5%;
+  width: 12%;
+  margin-right: 10%;
 }
 
 .secondView_form_word--seven {
@@ -72,7 +91,7 @@
 .secondView_form_word_tianzi {
   width: 100%;
   padding: 100% 0 0 0;
-  background: url('http://35332j61m8.zicp.vip/static/tianzige.png');
+  background: url('http://xt2021.liujl.com:8080/static/tianzige.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: relative;
