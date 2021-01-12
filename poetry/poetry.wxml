@@ -28,7 +28,7 @@
     </view>
   </view>
   <view class="secondView_bot">
-    <button type="primary" size="mini" bindtap="backToPreviousPage">返回上页</button>
+    <!-- <button type="primary" size="mini" bindtap="backToPreviousPage">返回上页</button> -->
     <button type="primary" size="mini" open-type="share">分享诗歌</button>
   </view>
 </view>

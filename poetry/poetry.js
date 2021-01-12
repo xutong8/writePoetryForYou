@@ -42,7 +42,7 @@ Page({
 
     ctx.setLineDash([3, 1]);
     ctx.lineWidth = 1.0;
-    ctx.globalAlpha = 0.5;
+    ctx.globalAlpha = 0.2;
 
     const yValues = [5, 10, 15, 20, 25];
 
@@ -96,12 +96,12 @@ Page({
 
       ctx.beginPath();
       ctx.moveTo(8, 25);
-      ctx.lineTo(35, 10);
+      ctx.lineTo(END_X - 5, 10);
       ctx.closePath();
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.arc(35, 10, 2, 0, 2 * Math.PI * 2, false);
+      ctx.arc(END_X - 5, 10, 2, 0, 2 * Math.PI * 2, false);
       ctx.closePath();
       ctx.fill();
 
